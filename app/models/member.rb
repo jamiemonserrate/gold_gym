@@ -7,10 +7,7 @@ class Member < ActiveRecord::Base
   validates :last_name, :first_name, :club, presence: true
 
   def workout
-    customized_workout = super
-
-    return customized_workout if customized_workout
-    club.workout if club
+    super || club.try(:workout)
   end
 
   def full_name

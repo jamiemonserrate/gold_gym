@@ -22,5 +22,11 @@ describe Member, :type => :model do
 
       expect(member.workout).to eq(club_workout)
     end
+
+    it 'should return nil if no woorkout available' do
+      member = Member.new(workout: nil, club: nil)
+
+      expect(member.workout).to eq(nil)
+    end
   end
 end
