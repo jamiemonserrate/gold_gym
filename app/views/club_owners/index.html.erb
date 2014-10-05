@@ -1,0 +1,26 @@
+<h1>Listing club_owners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @club_owners.each do |club_owner| %>
+      <tr>
+        <td><%= club_owner.email %></td>
+        <td><%= link_to 'Show', club_owner %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club owner', new_club_owner_path %>
+<%= link_to 'Back', root_path %>

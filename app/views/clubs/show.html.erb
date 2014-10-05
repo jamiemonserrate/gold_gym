@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @club.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @club.address %>
+</p>
+
+<p>
+  <strong>Default Workout of the club:</strong>
+  <%= @club.workout.title %>
+</p>
+
+<%- @club.members.each_with_index do |member, index| %>
+    <p>
+      <strong>Member no. <%= index %>:</strong>
+      <%= member.full_name %>
+    <td><%= link_to 'Remove from club', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </p>
+<% end %>
+
+<%= link_to 'Edit', edit_club_path(@club) %> |
+<%= link_to 'Back', club_owner_path(@club.club_owner) %>

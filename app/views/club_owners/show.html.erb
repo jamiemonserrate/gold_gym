@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @club_owner.email %>
+</p>
+
+<p>
+  <%= link_to 'View Club Details', club_path(@club_owner.club) %>
+</p>
+
+
+<%= link_to 'Back', club_owners_path %>

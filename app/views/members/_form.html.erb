@@ -1,0 +1,39 @@
+<%= form_for(@member) do |f| %>
+    <% if @member.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+          <ul>
+            <% @member.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :last_name %>
+      <br>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :first_name %>
+      <br>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :club_id, 'Which club to enroll in?' %>
+      <br>
+      <%= f.select(:club_id, Club.all.collect { |c| [c.name, c.id] }) %>
+    </div>
+    <%= f.fields_for :workout do |w| %>
+        <div class="field">
+          <%= w.label :title, 'Your custom workout (Leave this empty will default to the club workout)' %>
+          <br>
+          <%= w.text_field :title %>
+        </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
